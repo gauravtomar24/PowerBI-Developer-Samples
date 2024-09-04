@@ -29,6 +29,9 @@ async function getEmbedInfo() {
             'status': 200
         };
     } catch (err) {
+
+        console.log("ERRR", err);
+
         return {
             'status': err.status,
             'error': `Error while retrieving report embed details\r\n${err.statusText}\r\nRequestId: \n${err.headers.get('requestid')}`
@@ -47,6 +50,8 @@ async function getEmbedParamsForSingleReport(workspaceId, reportId, additionalDa
     const reportInGroupApi = `https://api.powerbi.com/v1.0/myorg/groups/${workspaceId}/reports/${reportId}`;
     const headers = await getRequestHeader();
 
+
+    console.log("here==========================, getEmbedParamsForSingleReport", headers, reportInGroupApi);
     // Get report info by calling the PowerBI REST API
     const result = await fetch(reportInGroupApi, {
         method: 'GET',
@@ -171,6 +176,7 @@ async function getEmbedTokenForSingleReportSingleWorkspace(reportId, datasetIds,
     const embedTokenApi = "https://api.powerbi.com/v1.0/myorg/GenerateToken";
     const headers = await getRequestHeader();
 
+    console.log("==============", formData)
     // Generate Embed token for single report, workspace, and multiple datasets. Refer https://aka.ms/MultiResourceEmbedToken
     const result = await fetch(embedTokenApi, {
         method: 'POST',
@@ -297,8 +303,11 @@ async function getRequestHeader() {
 
     // Get the response from the authentication request
     try {
+        console.log("fetching token===============")
         tokenResponse = await auth.getAccessToken();
+        console.log("SUCCESS", tokenResponse);
     } catch (err) {
+        console.log("ERORR", err)
         if (err.hasOwnProperty('error_description') && err.hasOwnProperty('error')) {
             errorResponse = err.error_description;
         } else {
