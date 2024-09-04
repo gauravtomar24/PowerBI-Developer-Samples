@@ -1,52 +1,41 @@
----
-topic: sample
-languages:
-  - csharp
-  - js
-  - python
-  - java
-  - ts
-  - powershell
-products:
-  - power-bi
-  - dotnet-core
-  - dotnet
-  - node-js
-  - react
-  - flask
----
+# Power BI Embedded sample in Node JS
 
-[![Build Status](https://powerbi.visualstudio.com/Embedded/_apis/build/status/Devolper-Samples-Azure%20Web%20App%20for%20ASP.NET-CI?branchName=master)](https://powerbi.visualstudio.com/Embedded/_build/latest?definitionId=2824&branchName=master)
+## Embed for your customers
 
-This repository contains Power BI Embedded solutions in 5 different frameworks to suit different scenarios as per requirements.
-In addition, it has samples for calling the Power BI REST APIs using PowerShell.
+### Requirements
 
+1. [Node JS](https://nodejs.org/en/download/)
+   
+2. IDE/code editor. We recommend using Visual Studio Code.
 
-**Available solutions for embedding Power BI content:**
-  * Embed for your customers - aka App Owns Data
-    * .NET Framework
-    * .NET Core
-    * Python
-    * Java
-    * Node JS
-  * Embed for your organization - aka User Owns Data
-    * .NET Framework
-    * .NET Core
-    * React TS
+### Set up a Power BI app
 
-Solutions for encrypting credentials and updating data sources are available in the following frameworks:
-  * .NET Core
-  * Python
-  * Node JS
+Follow the steps on [aka.ms/EmbedForCustomer](https://aka.ms/embedforcustomer)
 
+### Run the application on localhost
 
-> **Note:**
-> 1. README.md files specific to samples are present in their respective folders.
-> 2. Before running the samples on a Windows system, ensure that the length of their path location is not exceeding the [limit of 260 characters](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation).
+1. Open IDE.
+ 
+2. Open [AppOwnsData](./Embed%20for%20your%20customers/AppOwnsData) folder.
 
-[Power BI Developer documentation](https://docs.microsoft.com/en-us/power-bi/developer/)
+3. Open terminal and install required dependencies by executing the following command.<br>
+   `npm install`
+   
+4. Fill in the required parameters in the [config.json](./Embed%20for%20your%20customers/AppOwnsData/config/config.json) file related to AAD app, Power BI report, workspace, and user account information.
 
-## Issues
-[Power BI Support page](https://powerbi.microsoft.com/en-us/support/)
+5. Run the following command in CMD/PowerShell to start the application.<br>
+   `npm start`
 
-[Power BI Ideas](https://ideas.powerbi.com)
+6. Open **http://localhost:5300** in browser or refer to logs to check the port on which the application is running.
+
+#### Supported browsers:
+
+1. Google Chrome
+
+2. Microsoft Edge
+
+3. Mozilla Firefox
+
+## Important
+
+For security reasons, in a real world application, passwords and secrets should not be stored in config files. Instead, consider securing your credentials with an application such as Key Vault.
